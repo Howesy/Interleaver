@@ -6,6 +6,7 @@ public class Interleaver {
     final int spread;
 
     // Construct Interleaver Block Size = (x * x)
+    // Only works on block sizes of powers of 2, need to figure out how to do odd sizes etc
     public Interleaver(int x) throws Exception {
 
         if (x == 1) {
