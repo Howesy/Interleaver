@@ -5,21 +5,6 @@ public class Interleaver {
     final int delay;
     final int spread;
 
-    //Observe the behaviours when swapping.
-    
-    //Observe 4x4, see if there's a pattern.
-    
-    // [1, 2, 3, 4, 5, 6, 7, 8, 9] = [1, 4, 7, 2, 5, 8, 3, 6, 9]
-    // -> Block size: 3x3, x = 3
-    //Swap position array[1] with array[3]
-    //Swap position array[2] with array[6]
-    //Swap position array[5] with array[8]
-    
-    
-    // [1, 2, 3, 4] = [1, 3, 2, 4] 
-    // -> Block size: 2x2, x = 2
-    //Swap position array[1] and array[2]
-    
     // Construct Interleaver Block Size = (x * x)
     // Only works on block sizes of powers of 2, need to figure out how to do odd sizes etc
     // Matrix rotation will allow for all sizes to work (obviously not 1)
@@ -35,9 +20,30 @@ public class Interleaver {
         generatedArray = new int[blockSize];
     }
 
-    public int[] generatedInterleavedArray() {
-        return new int[1]; //Placeholder
+    //buffer[i][j] = curr_pact -> populating the buffer
+    //buffer[j][i] -> send the packet
+
+    public int[][] populateArray() {
+        int[][] constructedArray = new int[spread][spread];
+        int placeholderInt = 1;
+        for (int i = 0; i < spread; i++) {
+            for (int j = 0; j < spread; j++) {
+                constructedArray[i][j] = placeholderInt;
+                placeholderInt += 1;
+            }
+        }
+
+        return constructedArray;
     }
+
+    public void displayArrayInterleaved(int[][] twoDimensionalArray) {
+        for (int i = 0; i < spread; i++) {
+            for (int j = 0; j < spread; j++) {
+                System.out.println(twoDimensionalArray[j][i]);
+            }
+        }
+    }
+
 
     private int log2(int value) {
         return (int)(Math.log(value) / Math.log(2));
