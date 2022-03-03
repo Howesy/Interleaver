@@ -11,7 +11,7 @@ public class Interleaver {
     public Interleaver(int x) throws Exception {
 
         if (x == 1) {
-            //Don't perform interleaving.
+            throw new Exception("Cannot interleave a 1x1 matrix.");
         }
 
         blockSize = x * x;
