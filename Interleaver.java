@@ -6,8 +6,7 @@ public class Interleaver {
     final int spread;
 
     // Construct Interleaver Block Size = (x * x)
-    // Only works on block sizes of powers of 2, need to figure out how to do odd sizes etc
-    // Matrix rotation will allow for all sizes to work (obviously not 1)
+    // Matrix rotation will allow for all sizes to work.
     public Interleaver(int x) throws Exception {
 
         if (x == 1) {
